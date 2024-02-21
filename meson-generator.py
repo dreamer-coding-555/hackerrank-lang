@@ -22,13 +22,17 @@ subdir('solutions')
 solutions = {solutions}
 solved = {solved}
 
-configure_file(
-  input: 'solutions/meson.build.in',
-  output: 'solutions/meson.build',
-  configuration: '@INPUT@'
-)
+foreach iter : range(solved)
+    if solved >= 10
+        index_str = solutions[iter].slice(0, 2)
+    else
+        index_str = solutions[iter].slice(0, 1).to_int()
+    endif
+    name = solutions[iter].slice(3, -5)
+    executable('prog-' + index_str.to_string(), solutions[iter])
+endforeach
         """
-        with open(os.path.join(solutions_dir, 'meson.build.in'), 'w') as file:
+        with open(os.path.join(solutions_dir, 'meson.build'), 'w') as file:
             file.write(subdirectory_script)
 
 if __name__ == "__main__":
