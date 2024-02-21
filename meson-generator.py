@@ -23,9 +23,9 @@ solutions = {solutions}
 solved = {solved}
 
 if solved >= 10
-    index_str = '@0'
+    index_str = '_0'
 else
-    index_str = '@0[0:1]'
+    index_str = '_0[0:1]'
 endif
 
 foreach iter : range(solved)
