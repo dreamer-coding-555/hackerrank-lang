@@ -23,8 +23,8 @@ solutions = {solutions}
 solved = {solved}
 
 configure_file(
-  input: 'meson.build.in',
-  output: 'meson.build',
+  input: 'solutions/meson.build.in',
+  output: 'solutions/meson.build',
   configuration: '@INPUT@'
 )
         """
