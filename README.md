@@ -52,6 +52,4 @@ This repository is licensed under the Mozilla Public License 2.0 (MLP-2.0) - see
 
 ---
 
-**Note:** Replace placeholders like `category-name` with the specific category name, if applicable.
-
 Happy coding!
