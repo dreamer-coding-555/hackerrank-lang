@@ -13,19 +13,20 @@ subdir('solutions')
         with open('meson.build', 'w') as file:
             file.write(source_script)
 
+
     def generate_subdirectory_build_script(self):
         solutions_dir = 'solutions'
-        solutions = [f for f in os.listdir(solutions_dir) if f.endswith('.cpp')]
+        solutions = [os.path.splitext(f)[0] for f in os.listdir(solutions_dir) if f.endswith('.cpp')]
         solved = len(solutions)
-
+    
         subdirectory_script = f"""
 solutions = {solutions}
 solved = {solved}
 
 foreach iter : range(solved)
-    index_str = solutions[iter][0:2] if solved >= 10 else solutions[iter][0:1].to_int()
-    name = solutions[iter][3:-4]
-    executable('prog-' + index_str.to_string(), solutions[iter])
+    index_str = str(iter + 1) if solved >= 10 else str(iter + 1)
+    name = solutions[iter]
+    executable('prog-' + index_str, name + '.cpp')
 endforeach
         """
         with open(os.path.join(solutions_dir, 'meson.build'), 'w') as file:
