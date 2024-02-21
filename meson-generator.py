@@ -21,7 +21,7 @@ subdir('solutions')
 solutions = {len(solutions)}
 
 foreach solution : solutions
-    index_str = solution[:2] if len(solutions) >= 10 else solution[0]
+    index_str = (solution[0:2] if len(solutions) >= 10 else solution[0]) # Correct slicing syntax
     name = solution[3:-4]  # Remove index and extension
     executable('prog-' + index_str, solution)
 endforeach
