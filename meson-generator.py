@@ -22,10 +22,10 @@ subdir('solutions')
 solutions = {solutions}
 solved = {solved}
 
-foreach solution : solutions
-    index_str = (solution)[0:2] if solved >= 10 else (solution)[0].to_int()
-    name = (solution)[3:-4]
-    executable('prog-' + index_str.to_string(), solution)
+foreach iter : range(solved)
+    index_str = solutions[iter].subdir(0, 2) if solved >= 10 else solutions[iter].subdir(0, 1).to_int()
+    name = solutions[iter].subdir(3, -5)
+    executable('prog-' + index_str.to_string(), solutions[iter])
 endforeach
         """
         with open(os.path.join(solutions_dir, 'meson.build'), 'w') as file:
