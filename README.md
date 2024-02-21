@@ -18,12 +18,7 @@ To explore my solutions, follow these steps:
    git clone https://github.com/dreamer-coding-555/hackerrank-lang.git
    ```
 
-2. **Navigate to a Specific Category:**
-   ```bash
-   cd hackerrank-lang/solutions/index-name
-   ```
-
-3. **Browse Solutions:**
+2. **Browse Solutions:**
    Each folder contains a set of C++ files representing solutions to different problems. Review the code and problem statements to gain insights into my problem-solving approach.
 
 ## Directory Structure
