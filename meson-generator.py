@@ -21,9 +21,8 @@ subdir('solutions')
 solutions = {len(solutions)}
 
 foreach solution : solutions
-    index_str = solution.get_basename()[0:2] if len(solutions) >= 10 else solution.get_basename()[0]
     name = solution.get_basename()[3:-4]
-    executable('prog-{index_str}', solution)
+    executable(f'prog-{solution.get_basename()[0:2] if len(solutions) >= 10 else solution.get_basename()[0]}', solution)
 endforeach
         """
         with open(os.path.join(solutions_dir, 'meson.build'), 'w') as file:
