@@ -21,8 +21,8 @@ subdir('solutions')
 solutions = {len(solutions)}
 
 foreach solution : solutions
-    index_str = solution.get_basename()[0:2] if len(solutions) >= 10 else solution.get_basename()[0] # Correct slicing syntax
-    name = solution.get_basename()[3:-4]  # Remove index and extension
+    index_str = (solution.get_basename())[0:2] if len(solutions) >= 10 else (solution.get_basename())[0]  # Correct slicing syntax
+    name = (solution.get_basename())[3:-4]  # Remove index and extension
     executable('prog-' + index_str, solution)
 endforeach
         """
