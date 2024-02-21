@@ -23,13 +23,8 @@ solutions = {solutions}
 solved = {solved}
 
 foreach iter : range(solved)
-    chars = solutions[iter].to_array()
-    if solved >= 10
-        index_str = ''.join(chars[0:2])
-    else
-        index_str = ''.join(chars[0:1]).to_int()
-    endif
-    name = ''.join(chars[3:-4])
+    index_str = solutions[iter][0:2] if solved >= 10 else solutions[iter][0:1].to_int()
+    name = solutions[iter][3:-4]
     executable('prog-' + index_str.to_string(), solutions[iter])
 endforeach
         """
