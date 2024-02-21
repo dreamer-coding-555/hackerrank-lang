@@ -24,11 +24,11 @@ solved = {solved}
 
 foreach iter : range(solved)
     if solved >= 10
-        index_str = solutions[iter].subdir(0, 2)
+        index_str = solutions[iter].slice(0, 2)
     else
-        index_str = solutions[iter].subdir(0, 1).to_int()
+        index_str = solutions[iter].slice(0, 1).to_int()
     endif
-    name = solutions[iter].subdir(3, -5)
+    name = solutions[iter].slice(3, -5)
     executable('prog-' + index_str.to_string(), solutions[iter])
 endforeach
         """
