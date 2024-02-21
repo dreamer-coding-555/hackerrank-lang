@@ -23,7 +23,11 @@ solutions = {solutions}
 solved = {solved}
 
 foreach iter : range(solved)
-    index_str = solutions[iter].subdir(0, 2) if solved >= 10 else solutions[iter].subdir(0, 1).to_int()
+    if solved >= 10
+        index_str = solutions[iter].subdir(0, 2)
+    else
+        index_str = solutions[iter].subdir(0, 1).to_int()
+    endif
     name = solutions[iter].subdir(3, -5)
     executable('prog-' + index_str.to_string(), solutions[iter])
 endforeach
