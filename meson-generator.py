@@ -13,7 +13,6 @@ subdir('solutions')
         with open('meson.build', 'w') as file:
             file.write(source_script)
 
-
     def generate_subdirectory_build_script(self):
         solutions_dir = 'solutions'
         solutions = [os.path.splitext(f)[0] for f in os.listdir(solutions_dir) if f.endswith('.cpp')]
@@ -23,14 +22,20 @@ subdir('solutions')
 solutions = {solutions}
 solved = {solved}
 
+if solved >= 10
+    index_str = '@0'
+else
+    index_str = '@0[0:1]'
+endif
+
 foreach iter : range(solved)
-    index_str = str(iter + 1) if solved >= 10 else str(iter + 1)
     name = solutions[iter]
-    executable('prog-' + index_str, name + '.cpp')
+    executable('prog-' + index_str.format(iter + 1), name + '.cpp')
 endforeach
         """
         with open(os.path.join(solutions_dir, 'meson.build'), 'w') as file:
             file.write(subdirectory_script)
+
 
 if __name__ == "__main__":
     meson_generator = MesonScriptGenerator(project_name='Hacker Rank')
