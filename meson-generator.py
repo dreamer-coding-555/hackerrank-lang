@@ -15,14 +15,15 @@ subdir('solutions')
 
     def generate_subdirectory_build_script(self):
         solutions_dir = 'solutions'
-        num_solutions = len([f for f in os.listdir(solutions_dir) if f.endswith('.cpp')])
+        solutions = [f for f in os.listdir(solutions_dir) if f.endswith('.cpp')]
 
         subdirectory_script = f"""
-solutions = {num_solutions}
+solutions = {len(solutions)}
 
-foreach iter : range(solutions)
-    name = iter.to_string().zfill(2) if solutions >= 10 else iter.to_string()
-    executable('prog-' + index_str, name + '-solution' + '.cpp')
+foreach solution : solutions
+    index_str = solution[:2] if len(solutions) >= 10 else solution[0]
+    name = solution[3:-4]  # Remove index and extension
+    executable('prog-' + index_str, solution)
 endforeach
         """
         with open(os.path.join(solutions_dir, 'meson.build'), 'w') as file:
