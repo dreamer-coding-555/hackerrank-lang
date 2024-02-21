@@ -16,13 +16,15 @@ subdir('solutions')
     def generate_subdirectory_build_script(self):
         solutions_dir = 'solutions'
         solutions = [f for f in os.listdir(solutions_dir) if f.endswith('.cpp')]
+        solved = len(solutions)
 
         subdirectory_script = f"""
-solutions = {len(solutions)}
+solutions = {solutions}
+solved = {solved}
 
 foreach solution : solutions
-    index_str = (solution.get_basename())[0:2] if len(solutions) >= 10 else (solution.get_basename())[0]  # Correct slicing syntax
-    name = (solution.get_basename())[3:-4]  # Remove index and extension
+    index_str = (solution.get_basename())[0:2] if solved >= 10 else (solution.get_basename())[0]
+    name = (solution.get_basename())[3:-4]
     executable('prog-' + index_str, solution)
 endforeach
         """
