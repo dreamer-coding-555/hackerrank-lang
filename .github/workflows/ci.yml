@@ -8,9 +8,6 @@ on:
       - "**.cpp"
       - "**.hpp"
       - "**.py"
-      - "**.build"
-      - "**.m"
-      - "**.mm"
   pull_request:
     paths:
       - "**.c"
@@ -18,9 +15,6 @@ on:
       - "**.cpp"
       - "**.hpp"
       - "**.py"
-      - "**.build"
-      - "**.m"
-      - "**.mm"
 
 jobs:
   meson_build:
