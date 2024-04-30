@@ -30,7 +30,6 @@ endforeach
         with open(os.path.join(solutions_dir, 'meson.build'), 'w') as file:
             file.write(subdirectory_script)
 
-
 if __name__ == "__main__":
     meson_generator = MesonScriptGenerator(project_name='Hacker Rank')
     meson_generator.generate_source_build_script()
