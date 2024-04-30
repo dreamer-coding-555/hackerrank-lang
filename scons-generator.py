@@ -1,4 +1,5 @@
 import os
+from SCons.Script import Environment, Glob
 
 class SConsScriptGenerator:
     def __init__(self, project_name='YourProject'):
