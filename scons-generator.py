@@ -8,7 +8,7 @@ class SConsScriptGenerator:
         source_script = f"""
 env = Environment(CC='gcc', CXX='g++', CFLAGS=['-std=c2x'], CXXFLAGS=['-std=c++20', '-Werror'], tools=[])
 
-env.Program('main', Glob('*.cpp'))
+Program('main', Glob('*.cpp'))
 Default('main')
         """
         with open('SConstruct', 'w') as file:
@@ -26,7 +26,7 @@ solutions = {solutions}
 solved = {solved}
 
 for solution in solutions:
-    env.Program(solution, solution + '.cpp')
+    Program(target=solution, source=solution + '.cpp')
         """
         with open(os.path.join(solutions_dir, 'SConscript'), 'w') as file:
             file.write(subdirectory_script)
