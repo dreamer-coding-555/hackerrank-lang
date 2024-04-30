@@ -12,6 +12,8 @@ Description:
 */
 #include <iostream>
 
+//
+// Placed as a placeholder for solutions
 int main() {
     std::cout << "Hello, Fossil Logic!" << std::endl;
     return 0;
