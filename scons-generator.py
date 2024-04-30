@@ -1,5 +1,4 @@
 import os
-from SCons.Script import Environment, Glob
 
 class SConsScriptGenerator:
     def __init__(self, project_name='YourProject'):
@@ -10,6 +9,7 @@ class SConsScriptGenerator:
 env = Environment(CC='gcc', CXX='g++', CFLAGS=['-std=c2x'], CXXFLAGS=['-std=c++20', '-Werror'], tools=[])
 
 env.Program('main', Glob('*.cpp'))
+Default('main')
         """
         with open('SConstruct', 'w') as file:
             file.write(source_script)
