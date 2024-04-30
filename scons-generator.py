@@ -26,7 +26,7 @@ solutions = {solutions}
 solved = {solved}
 
 for solution in solutions:
-    Program(target=solution, source=solution + '.cpp')
+    Program(target=os.path.join('{solutions_dir}', solution), source=os.path.join('{solutions_dir}', solution + '.cpp'))
         """
         with open(os.path.join(solutions_dir, 'SConscript'), 'w') as file:
             file.write(subdirectory_script)
