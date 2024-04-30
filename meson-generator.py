@@ -6,7 +6,7 @@ class MesonScriptGenerator:
 
     def generate_source_build_script(self):
         source_script = f"""
-project('{self.project_name}', 'cpp')
+project('{self.project_name}', 'cpp', default_options: ['c_std=c2x', 'cpp_std=c++17', 'werror=true', 'buildtype=minsize'])
 
 subdir('solutions')
         """
@@ -22,15 +22,9 @@ subdir('solutions')
 solutions = {solutions}
 solved = {solved}
 
-if solved >= 10
-    index_str = '_0'
-else
-    index_str = '_0[0:1]'
-endif
-
 foreach iter : range(solved)
     name = solutions[iter]
-    executable('prog-' + index_str.format(iter + 1), name + '.cpp')
+    executable(name, name + '.cpp')
 endforeach
         """
         with open(os.path.join(solutions_dir, 'meson.build'), 'w') as file:
