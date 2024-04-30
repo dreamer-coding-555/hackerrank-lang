@@ -20,9 +20,7 @@ add_subdirectory(solutions)
         solved = len(solutions)
     
         subdirectory_script = f"""
-set(solutions
-    {";\n    ".join(solutions)}
-)
+set(solutions {";\n    ".join(solutions)})
 
 foreach(solution ${{solutions}})
     add_executable(${{solution}} ${{solution}}.cpp)
