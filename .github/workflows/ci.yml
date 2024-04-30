@@ -44,7 +44,7 @@ jobs:
       - name: Generate build file
         run: python meson-generator.py
       - name: Configure
-        run: meson setup builddir -Dwith_test=enabled
+        run: meson setup builddir
       - name: Compile
         run: meson compile -C builddir
 
