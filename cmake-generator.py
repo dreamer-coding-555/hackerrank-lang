@@ -7,7 +7,7 @@ class CMakeScriptGenerator:
     def generate_root_cmake_file(self):
         root_script = (
             "cmake_minimum_required(VERSION 3.10)\n"
-            "project(" + self.project_name + " LANGUAGES CXX)\n\n"
+            f"project(\"{self.project_name}\" LANGUAGES CXX)\n\n"
             "add_subdirectory(solutions)\n"
         )
         with open('CMakeLists.txt', 'w') as file:
