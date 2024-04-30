@@ -5,12 +5,11 @@ class CMakeScriptGenerator:
         self.project_name = project_name
 
     def generate_root_cmake_file(self):
-        root_script = f"""
-cmake_minimum_required(VERSION 3.10)
-project({self.project_name} LANGUAGES CXX)
-
-add_subdirectory(solutions)
-"""
+        root_script = (
+            "cmake_minimum_required(VERSION 3.10)\n"
+            "project(" + self.project_name + " LANGUAGES CXX)\n\n"
+            "add_subdirectory(solutions)\n"
+        )
         with open('CMakeLists.txt', 'w') as file:
             file.write(root_script)
 
@@ -19,13 +18,14 @@ add_subdirectory(solutions)
         solutions = [os.path.splitext(f)[0] for f in os.listdir(solutions_dir) if f.endswith('.cpp')]
         solved = len(solutions)
     
-        subdirectory_script = f"""
-set(solutions {";\n    ".join(solutions)})
-
-foreach(solution ${{solutions}})
-    add_executable(${{solution}} ${{solution}}.cpp)
-endforeach()
-"""
+        subdirectory_script = (
+            "set(solutions\n"
+            "    " + ";\n    ".join(solutions) + "\n"
+            ")\n\n"
+            "foreach(solution ${solutions})\n"
+            "    add_executable(${solution} ${solution}.cpp)\n"
+            "endforeach()\n"
+        )
         os.makedirs(solutions_dir, exist_ok=True)
         with open(os.path.join(solutions_dir, 'CMakeLists.txt'), 'w') as file:
             file.write(subdirectory_script)
